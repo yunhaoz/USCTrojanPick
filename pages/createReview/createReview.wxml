@@ -1,0 +1,103 @@
+<Header></Header>
+
+
+<button bind:tap="tapSwitch" class="switchButton {{forProf?'prof':'ta'}}"><text style="color: #953A3A;">{{forProf?"Rate TA":"Rate Prof"}}</text></button>
+
+<view class="TA-Mask" wx:if="{{!forProf}}">
+  
+</view>
+  
+
+<view class='new-review'>
+  <view class='chinese'>新建评价</view>
+  <view class='english'>New Review</view>
+</view>
+
+<view class='dropbox-block'>
+  <text class='lables'>{{isChinese?'课程':'Course'}}</text>
+  <view class='picker-box'>
+    <input style="color: {{text_color}}" placeholder="e.g ITP 115" bindinput="saveCourseCode" bindfocus="saveCourseCode" value="{{courseCode}}"/>
+    <view class='option_box' style='height:{{show_course?(225):0}}rpx; z-index: 1; position: absolute' catchtap="course_scroll">
+      <view class='option' wx:for='{{course_data}}' wx:key='this' data-index='{{index}}' catchtap='selectCourse'>{{item.courseCode}}</view>
+    </view>
+  </view>
+  <!-- <GradingInfo style="margin-top: 17rpx;"></GradingInfo> -->
+  <GradingInfo style="margin-top: 17rpx; display: flex; padding-left: 32rpx;" wrapperStyle="height: 42rpx; width: 42rpx;" boldText = "{{boldTextForIcon}}" normalText="{{normalTextForIcon}}"></GradingInfo>
+</view>
+
+<view class='dropbox-block'>
+  <text class='lables' wx:if="{{!isChinese}}">{{forProf?"Professor":"TA"}}</text>
+  <text class='lables' wx:if="{{isChinese}}">{{forProf?"教授":"TA"}}</text>
+  <view class='picker-box'>
+    <input style="color: {{text_color_prof}}" placeholder="e.g Tommy Trojan" bindinput="saveProfName" value="{{professorName}}"/>
+    <view class='option_box' style='height:{{show_prof?(225):0}}rpx;'>
+      <view class='option' wx:for='{{professor_data}}' wx:key='this' data-index='{{index}}' catchtap='selectProfessor'>{{item.professorName}}</view>
+    </view>
+  </view>
+  <!-- <GradingInfo style="margin-top: 17rpx;"></GradingInfo> -->
+  <!-- <GradingInfo style="margin-top: 17rpx;" boldText = "{{boldTextForIcon}}" normalText="{{normalTextForIcon}}"></GradingInfo> -->
+  <navigator class="add" url="/pages/addProfessor/addProfessor" hover-class="none">
+    <image class='imageadd' src="/icon/others/add.svg"></image>
+  </navigator>
+</view>
+
+<block wx:for='{{isChinese?evaluateTitle_ch:evaluateTitle_en}}' wx:key='idx' wx:for-index='idx'>
+  <view class='rate-block'>
+    <view class='lables'>{{item}}</view>
+    <!--星星评价  -->
+    <view class='star-block'>
+      <!--内层循环展示每个评价条目的星星  -->
+      <block wx:for="{{stars}}" wx:key='index'>
+        <view class="star" data-score="{{item + 1}}" data-idx='{{idx}}' bindtap="selectStar">
+          <image class="imagestar" src="{{scores[idx] > item ?selectedSrc: unselectedSrc}}"></image>
+        </view>
+      </block>
+    </view>
+  </view>
+</block>
+
+<view class='dropbox-block'>
+  <text class='lables'>{{isChinese?'评价':'Comment'}}</text>
+  <view class='picker-box' bindtap="showDialogBtn">
+    <view class= 'review-content-text picker-box-review-content'>{{content}}</view>
+  </view>
+</view>
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">{{isChinese?'评价':'Comment'}}</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <textarea placeholder="{{isChinese?'开始填写你的评价吧！':'Start to Write Your Review!'}}" bindinput="saveContent" maxlength="200" value="{{content}}" auto-height="true" class="input" auto-focus="{{true}}"></textarea>
+    </view>
+    <view class="length-text">{{content_len}}/200</view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">{{isChinese?'清空':'Clear'}}</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">{{isChinese?'保存':'Save'}}</view>
+  </view>
+</view>
+
+<view class='dropbox-block' id="grade">
+  <text class='lables' style="margin-top: 10rpx" wx:if="{{!isChinese}}">Grade
+    (optional)</text>
+  <text class='lables' wx:if="{{isChinese}}">成绩(选填)</text>
+  <view class='picker-box'>
+    <picker bindchange="bindPickerChange" value="{{gradeIndex}}" range="{{gradeArray}}">
+      <view class="picker">{{gradeArray[gradeIndex]}}</view>
+    </picker>
+  </view>
+</view>
+
+<view class="label">
+  <label>
+  <switch type="checkbox" checked="{{anonymous}}" class="checkbox-size" bindchange="changeAnonymous"/>
+    {{isChinese?'匿名发布评价':'Anonymous'}}
+  </label>
+</view>
+
+<view class="buttonsubmit">
+  <ConfirmButton title="{{isChinese?'提交':'Submit'}}" bind:onConfirm="submitReview"></ConfirmButton>
+</view>
+<BottomNav></BottomNav>

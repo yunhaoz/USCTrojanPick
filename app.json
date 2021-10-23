@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/savedReviews/savedReviews",
+    "pages/index/index",
+    "pages/courseInfo/courseInfo",
+    "pages/savedClasses/savedClasses",
+    "pages/pastReviews/pastReviews",
+    "pages/professorInfo/professorInfo",
+    "pages/profile/profile",
+    "pages/createReview/createReview",
+    "pages/reviewInfo/reviewInfo",
+    "pages/test/test",
+    "pages/testCloud/testCloud",
+    "pages/logs/logs",
+    "pages/addClass/addClass",
+    "pages/addProfessor/addProfessor",
+    "pages/bindUSC/bindUSC",
+    "pages/signup/signup",
+    "pages/login/login",
+    "pages/createQuestion/createQuestion"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFF",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "TrojanPick"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

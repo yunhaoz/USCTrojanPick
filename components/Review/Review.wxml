@@ -1,0 +1,129 @@
+<!--components/Review/Review.wxml-->
+<!-- 41+72+106+46 526 -->
+  <view class="box border">
+  <view class="top">
+    <view class="left">
+      <view class="left_avatar">
+        <image src="{{!anonymous?avatarUrl:anonymousAvatarUrl}}" style="margin-top: 14rpx; margin-bottom: 14rpx;"/>
+      </view>
+      <view class="left_text">
+        <text class="left_nickName" style="font-weight: bold"selectable="false" space="false" decode="false">{{!anonymous?nickName:anonymousNickName}}
+        </text>
+        <text class="left_postedDate" selectable="false" space="false" decode="false">{{postedTime}}</text> 
+      </view>
+    </view>
+    <view class="right" wx:if="{{isChinese}}">
+      <view class="right_row {{!hideProfessor?'':'hidden'}} {{!hideCourse?'':'only'}}">
+        {{forProf?'教授':'TA'}}: {{professorName}}
+      </view>
+      <view class="right_row {{!hideCourse?'':'hidden'}} {{!hideProfessor?'':'only'}}">
+        课程: {{courseCode}}
+      </view>
+    </view>
+    <view class="right" wx:if="{{!isChinese}}">
+      <view class="right_row {{!hideProfessor?'':'hidden'}} {{!hideCourse?'':'only'}}">
+        {{forProf?'Prof':'TA'}}: {{professorName}}
+      </view>
+      <view class="right_row {{!hideCourse?'':'hidden'}} {{!hideProfessor?'':'only'}}">
+        Course: {{courseCode}}
+      </view>
+    </view>
+  </view>
+
+  <navigator url="/pages/reviewInfo/reviewInfo?reviewID={{_id}}" class="content borderTop" wx:if="{{!detail}}" hover-class="none">
+    <view class="text">
+      {{content}}
+    </view>
+    <image src="/icon/others/delete.svg" class="delete {{!posted_by_me?'invisible':''}}" catch:tap="deleteTapped"/>
+    
+  </navigator>
+
+  <view class="content borderTop" wx:if="{{detail}}">
+    <view class="text-complete">
+      {{content}}
+    </view>
+    <image src="/icon/others/delete.svg" class="delete {{!posted_by_me?'invisible':''}}" catch:tap="deleteTapped" />
+  </view>
+
+  <view class="rating borderTop">
+    <view class="singleRating" style="margin-top: 16rpx;">
+      <view class="text">
+        {{isChinese?'总评分':'Overall'}}
+      </view>
+      <Stars Rating="{{overallRating}}"></Stars>
+    </view>
+    <view class="singleRating">
+      <view class="text">
+        {{isChinese?'课程难度':'Difficulty'}}
+      </view>
+      <Stars Rating="{{difficultyRating}}"></Stars>
+    </view> 
+    <view class="singleRating">
+      <view class="text">
+        {{isChinese?'内容趣味性':'Enjoyment'}}
+      </view>
+      <Stars Rating="{{entertainmentRating}}"></Stars>
+    </view> 
+    <view class="singleRating">
+      <view class="text">
+        Workload
+      </view>
+      <Stars Rating="{{workloadRating}}"></Stars>
+    </view> 
+    <view class="singleRating">
+      <view class="text">
+        Enrichment
+      </view>
+      <Stars Rating="{{enrichmentRating}}"></Stars>
+    </view> 
+    <view class="singleRating" style="margin-bottom: 16rpx;">
+      <view class="text">
+        {{isChinese?'成绩':'Grade'}}
+      </view>
+      <text class="text-right">{{grade}}</text>
+    </view>
+
+  </view>
+  
+  <view class="bottom borderTop">
+    <view bind:tap="upVoteTapped">
+      <image src="{{voted_by_me===1?'/icon/others/like.svg': '/icon/others/like_grey.svg'}}"></image>
+      <text style="margin-left: 6rpx">{{up_vote_count}}</text>
+    </view>
+    <view bind:tap="downVoteTapped">
+      <image src="{{voted_by_me===-1?'/icon/others/downvote.svg':'/icon/others/downvote_grey.svg'}}" style="margin-top: 10rpx;"></image>
+      <text style="margin-left: 6rpx">{{down_vote_count}}</text>
+    </view>
+    <view bind:tap="showDialogBox">
+      <!-- <input class="commentInput" bindconfirm="onCommentInputConfirm" /> -->
+      <image src="/icon/others/{{commentCount>0?'comment.svg':'comment_grey.svg'}}"></image>
+      <text style="margin-left: 6rpx">{{commentCount}}</text>
+    </view>
+
+    <view bind:tap="saveTapped" wx:if="{{!deleted}}">
+      <image src="{{saved_by_me===true?'/icon/others/favorite.svg':'/icon/others/favorite_grey.svg'}}" style="margin-top: -4rpx;"></image>
+      <text style="margin-left: 6rpx">{{favoriteCount}}</text>
+    </view>
+
+    <view bind:tap="savedTappedDeleted" wx:if="{{deleted}}">
+      <image src="{{'/icon/others/favorite.svg'}}"></image>
+    </view>
+
+  </view>
+</view>
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="{{true}}" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">{{isChinese?'回复':'Reply'}}</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <textarea placeholder="{{isChinese?'你的意见呢?':'What Do You Think?'}}" auto-focus="{{true}}" bindinput="onInputContent" value="{{inputCommentContent}}" auto-height="true" class="input" maxlength="200"></textarea>
+    </view>
+    <view class="length-text">{{content_len}}/200</view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancelSendMessage" data-status="cancel">{{isChinese?'取消':'Cancel'}}</view>
+    <view class="btn-confirm" bindtap="onConfirmSendMessage" data-status="confirm">{{isChinese?'提交':'Submit'}}</view>
+  </view>
+</view>

@@ -1,0 +1,5 @@
+<view class="bottom_nav_wrapper">
+    <image class="bottom_nav_image" src="/icon/others/house.svg" mode="widthFix" bind:tap="onTapHome" />
+    <image class="bottom_nav_image" src="/icon/others/user.svg" mode="widthFix" bind:tap="onTapProfile" />
+    <image class="bottom_nav_image" src="/icon/others/pen.svg" mode="widthFix" bind:tap="onTapCreate" />
+</view>

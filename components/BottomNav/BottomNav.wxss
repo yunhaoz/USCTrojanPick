@@ -1,0 +1,13 @@
+.bottom_nav_wrapper {
+  display: flex;
+  position: fixed;
+  bottom: 0rpx;
+  padding: 10rpx;
+  width: 100%;
+  justify-content: space-evenly;
+  background: -webkit-linear-gradient(top,white,#FFF7DB,#fee69c);
+}
+.bottom_nav_wrapper .bottom_nav_image {
+  width: 80rpx;
+  height: 80rpx;
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "Header": "/components/Header/Header",
+    "BottomNav": "/components/BottomNav/BottomNav",
+    "ConfirmButton": "/components/ConfirmButton/ConfirmButton",
+    "GradingInfo": "/components/GradingInfo/GradingInfo"
+  }
+}

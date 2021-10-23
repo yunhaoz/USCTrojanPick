@@ -1,0 +1,72 @@
+<Header></Header>
+<view class='question-title'>{{isChinese?'问答详情':'Q & A'}}</view>
+<view class='line-1'></view>
+
+<view>
+  <view class='question-box'>
+    <view class='top'>
+      <text class="question-icon icon"></text>
+      <text class="question-text">{{question.content}}</text>
+      <text wx:if="{{own_question}}" class="delete-icon icon" bindtap="deleteQuestion"></text>
+    </view>
+    <view class='bottom'>
+      <text class="date-text">{{question.postedTime}}</text>
+      <view class="good_question" style="margin-bottom: 10rpx; margin-top: 10rpx">
+        <view style="color: #6A6868;" wx:if="{{question.favored_by_me}}" data-index="{{index}}" bindtap="favored_cancel" >
+          undo_good_question | {{question.favoredCount}}
+        </view>
+        <view style="color: #953A3A" wx:if="{{!question.favored_by_me}}" data-index="{{index}}" bindtap="favored_new">
+          good_question | {{question.favoredCount}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='answer-box' wx:key="_id" wx:for="{{answers}}" wx:for-index="index" >
+    <view class='top'>
+      <text class="answer-icon icon"></text>
+      <text class="answer-text">{{item.content}}</text>
+    </view>
+    <view class='bottom'>
+      <text class="date-text">{{item.postedTime}}</text>
+      <view class="right">
+        <view bind:tap="upVoteTapped" data-index="{{index}}">
+        <image src="{{item.voted_by_me===1?'/icon/others/like.svg': '/icon/others/like_grey.svg'}}"></image>
+        <text>{{item.up_vote_count}}</text>
+        </view>
+        <view bind:tap="downVoteTapped" data-index="{{index}}">
+        <image src="{{item.voted_by_me===-1?'/icon/others/downvote.svg':'/icon/others/downvote_grey.svg'}}"></image>
+        <text>{{item.down_vote_count}}</text>
+        </view>
+        <view class="deleteView">
+          <!-- "delete {{!item.posted_by_me?'invisible':''}}" -->
+          <image src="/icon/others/delete_grey.svg" class="delete {{!item.posted_by_me?'invisible':''}}" bind:tap="deleteAnswerTapped" data-index="{{index}}" />
+        </view>
+      </view>
+      
+
+      
+    </view>
+  </view>
+</view>
+
+<YellowButton bind:tap="createAnswer" text="{{isChinese?'我要回答':'Answer a Question'}}"></YellowButton>
+
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">{{question.content}}</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <textarea bindinput="saveContent" maxlength="200" value="{{content}}" auto-height="true" class="input"></textarea>
+    </view>
+    <view class="length-text">{{content_len}}/200</view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onSave" data-status="cancel">{{isChinese?'保存':'Save'}}</view>
+    <view class="btn-confirm" bindtap="onSubmit" data-status="confirm">{{isChinese?'提交':'Submit'}}</view>
+  </view>
+</view>
+
+<BottomNav></BottomNav>

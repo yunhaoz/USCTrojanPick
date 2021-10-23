@@ -1,0 +1,13 @@
+/* components/langSwitch/langSwitch.wxss */
+button{
+  position: absolute;
+  width: 80rpx !important;
+  height: 50rpx;
+  /* background-color: #fff; */
+  font-size: 24rpx;
+  font-weight: 400;
+  text-align: center;
+  padding: 10rpx;
+  color: #953A3A;
+  background-color: #F8C1B0;
+}

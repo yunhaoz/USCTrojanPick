@@ -1,0 +1,33 @@
+<Header></Header>
+
+<view class="title_wrapper">
+    <view class="title_line_1">新建课程</view>
+    <view class="title_line_2">New Course</view>
+</view>
+
+<view class="content_wrapper">
+
+    <view class="row">
+        <view class="text">
+            Course Code
+        </view>
+        <view class="textInput">
+            <input class="text" type="text" bind:input="onCourseIdInput" placeholder="e.g. ITP 115" />
+        </view>
+    </view>
+    <view class="row">
+        <view class="text">
+            Course Name
+        </view>
+        <view class="textInput">
+            <input class="text" type="text" bind:input="onCourseNameInput" placeholder="e.g. Introduction to Python" />
+        </view>
+    </view>
+
+
+    <view class="confirmButtonWrapper">
+        <ConfirmButton title="Submit" bind:onConfirm="onConfirm"></ConfirmButton>
+    </view>
+</view>
+
+<BottomNav></BottomNav>

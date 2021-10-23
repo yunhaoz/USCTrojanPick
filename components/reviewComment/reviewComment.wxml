@@ -1,0 +1,26 @@
+<!--components/reviewComment.wxml-->
+<view class="comment">
+  <view class="top">
+    <view class="avatar"><image src="{{avatarUrl}}"></image></view>
+    <view class="right">
+      <view class="username">{{nickName}}</view>
+      <view class="date">{{postedTime}}</view>
+    </view>
+  </view>
+  <view class="content">{{content}}</view>
+  <view class="bottom">
+    <view class="left">
+      <view bind:tap="upVoteTapped">
+        <image src="{{voted_by_me===1?'../../icon/others/like.svg': '../../icon/others/like_grey.svg'}}"></image>
+        <text style="margin-left: 6rpx">{{up_vote_count}}</text>
+      </view>
+      <view bind:tap="downVoteTapped" style="margin-left: 20rpx;">
+        <image src="{{voted_by_me===-1?'../../icon/others/downvote.svg':'../../icon/others/downvote_grey.svg'}}" style="margin-top: 6rpx;"></image>
+        <text style="margin-left: 6rpx">{{down_vote_count}}</text>
+      </view>
+    </view>
+    <view wx:if="{{posted_by_me}}" class="right"> 
+      <image src="../../icon/others/delete.svg" bind:tap="deteleTapped" style="margin-top: -6rpx;"></image>
+    </view>
+  </view>
+</view>

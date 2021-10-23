@@ -1,0 +1,33 @@
+.title {
+  margin-top: 62rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  color: #953A3A;
+  font-family: Heiti SC
+}
+.line {
+  width: 450rpx;
+  border: 1rpx solid #F8C1B0;
+  margin: auto;
+  margin-top: 14rpx;
+}
+.ratings {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width:450rpx;
+  margin: auto;
+  margin-top: 42rpx;
+}
+.ratings .single {
+  width: 50%;
+}
+picker {
+  width: max-content;
+  margin: auto;
+}
+picker .picker-text{
+  color: #953A3A;
+}

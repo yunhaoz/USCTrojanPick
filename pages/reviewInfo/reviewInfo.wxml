@@ -1,0 +1,11 @@
+<!--pages/ratingInfo/ratingInfo.wxml-->
+<view class="ratingInfo">
+  <Header></Header>
+  <view class="title">{{isChinese?'评价详情':'Review Details'}}</view>
+  <view class="line"></view>
+ 
+  <Review item="{{review}}" bind:deleteTappedFromReview="onTapDeleteFromReviewInDetail" detail="{{true}}" bind:addNewComment="onAddNewComment" id="review" ></Review>
+
+  <Comment wx:for="{{comments}}" wx:key="_id" comment="{{item}}" bind:deleteTappedFromComment="onTapDeleteFromComment" data-index="{{index}}"></Comment>
+  <BottomNav></BottomNav>
+</view>

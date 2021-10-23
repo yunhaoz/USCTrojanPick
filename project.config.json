@@ -1,0 +1,144 @@
+{
+  "description": "项目配置文件",
+  "cloudfunctionRoot": "cloud/",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "useIsolateContext": true,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "disableUseStrict": false,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false,
+    "minifyWXML": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.14.1",
+  "appid": "wxe986e78b79b298ff",
+  "projectname": "TrojanPick",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "scripts": {},
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "home",
+          "pathName": "pages/home/home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "addClass",
+          "pathName": "pages/addClass/addClass",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "addProfessor",
+          "pathName": "pages/addProfessor/addProfessor",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "bindUSC",
+          "pathName": "pages/bindUSC/bindUSC",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "signup",
+          "pathName": "pages/signup/signup",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "test",
+          "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "cloud",
+          "pathName": "pages/testCloud/testCloud",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "courseinfo",
+          "pathName": "pages/courseInfo/courseInfo",
+          "query": "courseID=a8831daa5fe0cf9d00657ae1018fcc6d",
+          "scene": null
+        },
+        {
+          "name": "professorInfo",
+          "pathName": "pages/professorInfo/professorInfo",
+          "query": "professorID=2424fa985fe1e0bf005e75e61823f605",
+          "scene": null
+        },
+        {
+          "name": "profile",
+          "pathName": "pages/profile/profile",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "createQuestion",
+          "pathName": "pages/createQuestion/createQuestion",
+          "query": "courseID=85ff8afa5fe0d2c500579fd92f4aff16",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

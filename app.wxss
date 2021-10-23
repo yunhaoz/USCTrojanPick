@@ -1,0 +1,27 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+  width: 750rpx;
+  overflow:hidden;
+} 
+page{
+  box-sizing: border-box;
+  padding-bottom: 200rpx;
+  width: 100%;
+  overflow-x:hidden;
+}
+
+.big_input_field{
+  width: 408rpx;
+  height: 86rpx;
+  margin-left: auto;
+  margin-right: auto;
+  background: #FFF7DB;
+  border: 1px solid #F8C1B0;
+}

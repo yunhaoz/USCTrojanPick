@@ -1,0 +1,15 @@
+<Header></Header>
+<view class='newquestion'>
+  <view class='chinese'>新建问题</view>
+  <view class='english'>New Question</view>
+</view>
+
+<view class="enterbox">
+  <textarea placeholder="{{isChinese?'e.g. 这节课需要课本吗？':'e.g. Is Textbook Needed?'}}" bindinput="saveQuestion" fixed="true"></textarea>
+</view>
+
+<button bindtap="submitQuestion">
+  <text class="buttonname">{{isChinese?'提交':'Submit'}}</text>
+</button>
+
+<BottomNav></BottomNav>

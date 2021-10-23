@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "Review":"../../components/Review/Review",
+    "BottomNav":"../../components/BottomNav/BottomNav",
+    "Header":"../../components/Header/Header",
+    "DropDown":"../../components/DropDown/DropDown",
+    "Pagination":"../../components/Pagination/Pagination"
+  }
+}

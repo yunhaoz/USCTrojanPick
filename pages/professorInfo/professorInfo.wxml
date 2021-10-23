@@ -1,0 +1,37 @@
+<!--pages/professorInfo/professorInfo.wxml-->
+<GradingInfo></GradingInfo>
+<view class="TA-Mask" wx:if="{{!forProf}}"> </view>
+<view class="TA-Mask2" wx:if="{{!forProf}}"> </view>
+<Header></Header>
+<view class="{{!forProf?'bigTAWrapper':''}}">
+  <view class="title">
+    <view class="left">
+      {{professorName}}
+    </view>
+    <view class="middle"></view>
+    <view class="right">{{overallRating}}</view>
+  </view>
+  <view class="courseInfo">
+    <view class="info">
+      <view wx:if="{{courseTaught.length == 0}}" class="courseTitle">{{isChinese?'无课程记录':'No Course is Recorded.'}}</view>
+      <view wx:if="{{!courseTaught.length == 0}}" class="courseTitle" style="padding-bottom: 18rpx;">
+        Courses Taught
+      </view>
+    </view>
+    <view wx:if="{{!courseTaught.length == 0}}" style="border-bottom: 1rpx solid #F8C1B0;"></view>
+    <view wx:if="{{!courseTaught.length == 0}}" class="unit" wx:for="{{courseTaught}}" wx:key="index" > 
+      <text>{{item.courseCode}}</text>: {{item.courseUnit}}
+    </view>
+  </view>
+  <!-- numeric Review with selection box and four ratings -->
+  <NumericRating dropDownType="{{1}}" entertainmentRating="{{entertainmentRating}}" difficultyRating="{{difficultyRating}}" workloadRating="{{workloadRating}}" enrichmentRating="{{enrichmentRating}}" professorID="{{professorID}}" bindchoosePicker="handlePicker" id="myNumeric"></NumericRating>
+  <!-- display user ratings  -->
+  
+  <Review wx:for="{{reviews}}" item="{{item}}" wx:key="_id" hideProfessor="{{true}}" bind:deleteTappedFromReview="deleteTappedFromReview" data-index="{{index}}"></Review>
+  <YellowButton text="{{isChinese?'填写评价':'Write a Review'}}" bind:tap="onTapCreateReview"></YellowButton>
+
+  <!-- <YellowButton text="更多评价" bindtap="moreRating"></YellowButton> -->
+  <Pagination pages="{{totalPage}}" bind:onClickItem="handlePagination" activePage="{{currentPageInReviews}}" isHot="{{isHot}}"></Pagination>
+  <BottomNav courseID="{{courseID}}" courseCode="{{courseCode}}" professorID="{{professorID}}" professorName="{{professorName}}" forProf="{{forProf}}"></BottomNav>
+
+</view>

@@ -1,0 +1,5 @@
+
+<view wx:for="{{myarr}}" >
+  {{item.name}}
+  <button data-index="{{index}}" bindtap="delete">delete</button>
+</view>

@@ -1,0 +1,6 @@
+<button myLang="{{myLang}}" bind:tap="switchEnglish" style="right: 650rpx; top: 480rpx;" >
+  EN
+</button>
+<button myLang="{{myLang}}" bind:tap="switchChinese" style="right: 560rpx; top: 480rpx;">
+  中
+</button>

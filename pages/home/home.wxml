@@ -1,0 +1,97 @@
+<Header></Header>
+
+<button wx:if="{{activeTab===1}}" bind:tap="tapSwitch" class="switchButton {{forProf?'prof':'ta'}}">{{forProf?"TA":"Prof"}}</button>
+
+<view class="TA-Mask" wx:if="{{!forProf && activeTab === 1}}"> </view>
+
+<view class="rating_row">
+    <view class="left_rating {{activeTab===0?'active':''}}" bind:tap="onTabTapped" data-index="{{0}}">
+        <image class="left_rating_img" mode="widthFix" src="/icon/ours/classRating.svg"> </image>
+        <view class="left_rating_text">
+            <view class="left_rating_text_line_1">
+                课程评价
+            </view>
+            <view class="left_rating_text_line_2">
+                View by Classes
+            </view>
+        </view>
+    </view>
+    <view class="right_rating {{activeTab===1?'active':''}}" bind:tap="onTabTapped" data-index="{{1}}">
+        <image class="right_rating_img" mode="widthFix" src="/icon/ours/profRating.svg"> </image>
+        <view class="right_rating_text">
+            <view class="right_rating_text_line_1">
+                教授/TA
+            </view>
+            <view class="right_rating_text_line_2">
+                View by Profs/TA
+            </view>
+        </view>
+    </view>  
+</view>
+
+<view class="rate_by_class_big_tab"
+    wx:if="{{activeTab===0}}"
+>
+    <view class="search_row">
+        <view class="search_row_content_wrapper" style="width: 470rpx;">
+            <view class="search_bar">
+                <input value="{{searchCourseCode}}" bind:input="onSearchCourseInput" type="text" class="search_bar_input" placeholder="{{isChinese?'搜索课程':'Search a Course'}}" placeholder-class="search_bar_input_placeholder" />
+            </view>
+            <view class="search_btn">
+                <image bind:tap="onTapSearchClass" src="/icon/others/search.svg" mode="widthFix" />
+            </view>
+            <GradingInfo style="padding-top: 40rpx; display: flex; padding-left: 18rpx;" wrapperStyle= "{{wrapperStyleForIcon}}" boldText = "{{boldTextForIcon}}" normalText="{{normalTextForIcon}}" italicText="{{italicTextForIcon}}"></GradingInfo>
+        </view>
+    </view>
+    
+    <view class="sort_row">
+        <view class="sort_row_content_wrapper">
+            <view class="left_text">
+                {{isChinese?'排序方式':'Sort By'}}
+            </view>
+            <view class="right_picker_wrapper">
+                <picker class="right_picker" mode="selector" range="{{picker_arr}}" value="{{picker_index}}" bindchange="onPickerChange">
+                    <view class="picker_picked_wrapper">
+                        <text class="picker_picked">{{picker_arr[picker_index]}}</text>
+                    </view>
+                </picker>
+                
+            </view>
+        </view>
+    </view>
+    
+    <ClassCards course_cards_info="{{course_cards_info}}" ></ClassCards>
+</view>
+<view class="rate_by_prof_big_tab"
+    wx:else
+>
+    <view class="search_row">
+        <view class="search_row_content_wrapper">
+            <view class="search_bar">
+                <input wx:if="{{!isChinese}}" value="{{searchProfessorName}}" bind:input="onSearchProfessorInput" type="text" class="search_bar_input" placeholder="{{forProf? 'Search a Prof':'Search a TA'}}" placeholder-class="search_bar_input_placeholder" />
+                <input wx:if="{{isChinese}}" value="{{searchProfessorName}}" bind:input="onSearchProfessorInput" type="text" class="search_bar_input" placeholder="{{forProf? '搜索教授':'搜索TA'}}" placeholder-class="search_bar_input_placeholder" />
+            </view>
+            <view class="search_btn">
+                <image bind:tap="onTapSearchProfessor" src="/icon/others/search.svg" mode="widthFix" />
+            </view>
+        </view>
+    </view>
+
+    <view class="professor_card_displayer_wrapper">
+        <navigator class="professor_card"
+            wx:for="{{prof_cards_info}}"
+            wx:key="_id"
+            wx:for-item="card"
+            data-courseID="{{card.professorID}}"
+            url="/pages/professorInfo/professorInfo?professorID={{card._id}}"
+        >
+            <view class="professor_card_text">
+                <view class="professor_card_text_line">{{card.professorName}}</view>
+            </view>
+        </navigator>
+    </view>
+
+</view>
+<langSwitch bind:isChinese="changeLang"></langSwitch>
+<BottomNav></BottomNav>
+

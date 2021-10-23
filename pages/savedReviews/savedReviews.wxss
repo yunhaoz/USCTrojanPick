@@ -1,0 +1,26 @@
+.favoriteRatings {
+  margin-bottom: 340rpx;
+}
+.favoriteRatings .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  color: #953A3A;
+  margin-top: 116rpx;
+}
+.favoriteRatings .line {
+  width: 406rpx;
+  border: 1rpx solid #F8C1B0;
+  margin: auto;
+  margin-top: 18rpx;
+}
+.placeholder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35rpx;
+  color: #953A3A;
+  margin-top: 116rpx;
+  font-family: Heiti SC;
+}

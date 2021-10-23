@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "Header": "/components/Header/Header",
+    "BottomNav": "/components/BottomNav/BottomNav",
+    "Review":"/components/Review/Review",
+    "YellowButton":"/components/yellowButton/yellowButton",
+    "NumericRating":"/components/numericRating/numericRating",
+    "Stars":"/components/stars/stars",
+    "Pagination":"/components/Pagination/Pagination"
+  }
+}
